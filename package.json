@@ -4,7 +4,7 @@
   "private": true,
   "description": "Private, code-joined rooms with room-local ghost identities. No fake activity, no extra services.",
   "engines": {
-    "node": ">=22.0.0"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "next dev",

@@ -24,3 +24,4 @@ supabase/.branches/
 artifacts/
 # One-time destructive operator history, never part of an app release.
 scripts/reset-room-version.ts
+.vercel
