@@ -1,6 +1,6 @@
 # GhostPost verification
 
-## GitHub/Vercel release preflight (2026-10-16)
+## Live GitHub/Vercel release (2026-10-16)
 
 - User explicitly selected public repository `Dheeraj-Baghel/ghostpost` and personal,
   non-commercial hosting on Vercel `softtech10` Hobby. Remote was verified empty.
@@ -11,11 +11,31 @@
   logs and the one-time reset script are excluded from publication.
 - Fresh `npm run check`: lint, TypeScript, **21 unit tests**, **37 PostgreSQL tests**
   and production build passed. Supabase data/schema/provider settings unchanged.
-- A dedicated Vercel project and verified hostname are reserved with Node 24 and
-  the three Production-only public variables. No preview receives production data.
-- Hosted release and actual production Google login are pending the URL-configuration
-  step documented in [deployment instructions](DEPLOYMENT.md). Reservation and a
-  local build do not imply a working deployed site.
+- Source pushed to public GitHub. Vercel project `ghostpost` in `softtech10` is Ready
+  at https://ghostpost-softtech10.vercel.app with Node 24 and exactly three
+  Production-only public application variables. GitHub `main` integration confirmed.
+  Production is public; Preview authentication protection remains enabled.
+- User confirmed production Supabase Site URL/redirect settings saved. No agent
+  management-API readback or Google secret changes occurred.
+- First cloud install failed because optional `@emnapi/core` and `@emnapi/runtime`
+  entries were missing. Lock metadata was repaired and Node pinned to 24.x; no
+  existing dependency versions were upgraded. Second cloud clean install and
+  production build succeeded. The published application release commit is `4e20eea`.
+- `npm audit --omit=dev`: **0 vulnerabilities**. Full audit: five high records in
+  the previously documented dev-only braces/Next ESLint chain. The suggested fix
+  is a cross-major lint downgrade and was not applied.
+- **Live HTTPS Playwright: 9 passed, 1 intentionally skipped** using
+  `PLAYWRIGHT_BASE_URL=https://ghostpost-softtech10.vercel.app` and matching
+  `NEXT_PUBLIC_SITE_URL`. Landing/login/signup, session-protected room routes,
+  callback error redirects, keyboard/modal behavior, responsive layouts, Axe,
+  production-URL Google initiation and PKCE passed.
+- Google navigation was intercepted before the provider. Actual Google return,
+  signed-in room workflows and secondary email delivery on the live site remain
+  user checks; no live accounts or posts were created by these smoke tests.
+- Secondary hostname redirects 308 to the canonical hostname. GitHub tree contains
+  only the blank `.env.example`, no local environment, artifacts or reset script.
+  Deployment file listing contains no private env or screenshot/reset files.
+  Existing Supabase data/schema/accounts were not changed during this release.
 
 ## Current: authorized hosted clean start (2026-10-16)
 

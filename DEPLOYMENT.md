@@ -7,13 +7,17 @@ and deployment, then explicitly selected **public GitHub + personal/non-commerci
 Vercel Hobby**. This supersedes the private-repository assumption and hosting hold
 in historical sections below. Do not change repository visibility or buy a plan.
 
-- Repository: `Dheeraj-Baghel/ghostpost`, initially empty; only this app is its root.
+- Repository: [Dheeraj-Baghel/ghostpost](https://github.com/Dheeraj-Baghel/ghostpost),
+  public and pushed; only this app is its root. Git integration is connected with
+  production branch `main`. Merge/push to `main` triggers a production deployment.
 - Vercel: dedicated `ghostpost` project in `softtech10`, Node 24, Next.js, `npm ci`,
   `npm run build`. Existing workspace deployments are not reused or modified.
-- Reserved production origin: **https://ghostpost-softtech10.vercel.app**.
+- **Live production origin: https://ghostpost-softtech10.vercel.app**.
+  The automatically allocated `ghostpost-psi.vercel.app` redirects here with 308,
+  avoiding cross-host PKCE-cookie problems. Use the canonical URL when sharing.
 - Only the three public application variables are configured for **Production**.
   Preview does not receive production database credentials. Preview deployment
-  protection is enabled; the production hostname is intended to be publicly reachable.
+  protection is enabled; the production hostname was verified publicly accessible.
 - Authenticated GitHub and Vercel browser flows succeeded. No chat-supplied PAT was
   used or stored in the project. A token disclosed in chat must be revoked by its
   owner. Never put any replacement credential in documentation or source.
@@ -22,8 +26,9 @@ in historical sections below. Do not change repository visibility or buy a plan.
   excluded. No hosted migration, data reset, new users or role changes occur here.
 - Fresh lint, types, 21 unit tests, 37 PostgreSQL tests and production build passed.
 
-**Remaining before deployment:** save production Supabase URL configuration while
-preserving localhost entries. Set Site URL to the reserved origin and add exactly:
+**Production URL configuration saved (user-reported).** The user confirmed the
+dashboard step before deployment. Site URL is the canonical origin; retain the
+localhost redirects and these exact production entries:
 
 ```text
 https://ghostpost-softtech10.vercel.app/auth/callback
@@ -33,12 +38,39 @@ https://ghostpost-softtech10.vercel.app/auth/callback?next=/reset-password
 https://ghostpost-softtech10.vercel.app/auth/confirm
 ```
 
-The Google-provider credentials and Google-to-Supabase callback stay unchanged.
-No Supabase management credential is available to apply these settings here;
-the dashboard step is pending user completion. The reserved URL is not a claim
-of successful deployment. Then verify public HTTPS routes, signed-out protection,
-Google initiation with the production redirect and a user-operated Google login.
-Do not test destructive workflows against existing room content.
+The agent did not change Google-provider credentials or the Google-to-Supabase
+callback. Supabase dashboard settings are user-reported, not management-API readback.
+The initial cloud build caught incomplete optional `@emnapi` lock entries; the
+lockfile was repaired without upgrading existing dependency versions, and the
+Node engine is pinned to `24.x`. The next cloud `npm ci` and Next build succeeded.
+Production dependency audit: zero findings. The full development audit retains
+five high-severity records in the existing braces/Next lint chain; do not apply
+the suggested cross-major Next lint downgrade with `audit fix --force`.
+
+**Live verification:** 9 public browser checks passed, one setup-state test skipped.
+HTTPS pages, signed-out room/moderator denial, safe callback error handling,
+responsive views, Axe and production-URL Google initiation passed. Provider
+navigation was intercepted; actual Google consent/return and signed-in room
+workflows on the live hostname remain to be checked by the user. No hosted test
+accounts, posts, database migrations/resets or role changes were made for hosting.
+
+Vercel CLI's project link added its local ephemeral OIDC value to the ignored local
+environment; existing application/operator values and localhost origin were
+verified intact, permissions remain 0600. That file was not uploaded. Production
+has only the three public application variables, confirmed via environment metadata.
+
+### Normal releases from now on
+
+1. Make changes on a branch; run `npm run check` and relevant browser tests.
+2. Review a preview. No production Supabase variables are set for Preview, so
+   configure a separate disposable/test project for authenticated preview checks.
+3. Merge to `main`; the connected GitHub integration deploys production.
+4. Verify Vercel reaches Ready and smoke-test the canonical URL before announcing.
+5. Use reviewed additive SQL migrations and backups for database changes. No seed
+   or reset runs during builds. An application rollback does not roll back Supabase.
+
+The public repo exposes source code, not private room data. Keep future screenshots,
+feedback issues and reproduction details free of room keys or personal content.
 
 The prior preflight/release notes below are retained history.
 

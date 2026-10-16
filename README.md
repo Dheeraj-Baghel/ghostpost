@@ -9,13 +9,20 @@ dialogs/menus, Lucide icons, and no fake feed fallback.
 
 ## Current: private rooms (2026-10-16)
 
-**Release destination:** [Dheeraj-Baghel/ghostpost](https://github.com/Dheeraj-Baghel/ghostpost)
-is the standalone source repository; the user explicitly chose **public source**.
-The dedicated GhostPost project in Vercel workspace `softtech10` has reserved
-`https://ghostpost-softtech10.vercel.app`, Node 24 and production-only application
-configuration. Personal/non-commercial use on Hobby was confirmed. Deployment is
-pending production Supabase callbacks and release verification; a reserved domain
-is not yet a working site. See [hosting status and safe updates](DEPLOYMENT.md).
+**[Live GhostPost](https://ghostpost-softtech10.vercel.app)** is deployed on Vercel
+Hobby for the user's confirmed personal/non-commercial use. The source is public:
+[Dheeraj-Baghel/ghostpost](https://github.com/Dheeraj-Baghel/ghostpost).
+The dedicated `ghostpost` project in `softtech10` uses Node 24; GitHub `main` is
+connected for production deployments. Only the three public application variables
+are set, for Production only; authenticated previews need separate test Supabase.
+
+The user reports saving Supabase production URL settings. Nine live HTTPS browser
+checks passed (one configuration-state skip): public/auth pages, protected-route
+denial, mobile/desktop accessibility and Google initiation with the production
+callback. The Google provider navigation is intercepted; **the final actual Google
+round trip and signed-in room tests on the live hostname are still user checks**.
+Existing Supabase data and accounts were not changed during hosting. See
+[hosting status and safe updates](DEPLOYMENT.md).
 
 Local verification screenshots, logs, environment files and the one-time reset
 script are deliberately excluded from GitHub and Vercel uploads. Screenshot links
