@@ -1,0 +1,39 @@
+# Local Supabase CLI configuration. No remote credentials live in this file.
+project_id = "ghostpost"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 100
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 17
+
+[db.seed]
+enabled = false
+
+[studio]
+enabled = true
+port = 54323
+
+[inbucket]
+enabled = true
+port = 54324
+
+[auth]
+enabled = true
+# Match the existing GhostPost development origin; not hosted dashboard state.
+site_url = "http://localhost:4318"
+additional_redirect_urls = ["http://localhost:4318/auth/callback", "http://localhost:4318/auth/callback?next=/feed", "http://localhost:4318/auth/callback?next=/join", "http://localhost:4318/auth/callback?next=/reset-password", "http://localhost:4318/auth/confirm"]
+jwt_expiry = 3600
+enable_signup = true
+minimum_password_length = 10
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = true

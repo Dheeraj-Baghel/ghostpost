@@ -1,0 +1,26 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+.vercel/
+*.tsbuildinfo
+playwright-report/
+test-results/
+.test-db/
+supabase/.temp/
+supabase/.branches/
+*.log
+.DS_Store
+
+# Private-key exports must never enter the application repository.
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Local verification captures may contain room content or one-time join keys.
+# Keep them available in Designer, never publish them with source.
+artifacts/
+# One-time destructive operator history, never part of an app release.
+scripts/reset-room-version.ts
